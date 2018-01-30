@@ -3,6 +3,7 @@
     Created on : 30-ene-2018, 8:46:33
     Author     : Alejandro
 --%>
+<%@page import="entities.Proyeccion"%>
 <%@page import="entities.Tarifa"%>
 <%@page import="entities.Sesion"%>
 <%@page import="java.util.List"%>
@@ -32,7 +33,9 @@ EntityManager em=null;
                query= em.createQuery("select t from Tarifa t");
                List<Tarifa> tarifas= query.getResultList();
                session.setAttribute("tarifas", tarifas);
-               
+                query= em.createQuery("select t from Proyeccion t");
+                  List<Proyeccion> proyecciones= query.getResultList();
+                  session.setAttribute("proyecciones", proyecciones);
                 %>
                  <jsp:forward page="mainview.jsp"/>
                  <%  }
