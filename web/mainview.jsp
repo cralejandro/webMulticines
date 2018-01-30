@@ -4,6 +4,8 @@
     Author     : Alejandro
 --%>
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="entities.Proyeccion"%>
 <%@page import="entities.Tarifa"%>
 <%@page import="entities.Sesion"%>
 <%@page import="java.util.List"%>
@@ -40,9 +42,19 @@
           
           <div class="row">
               <div class="col s4">
-                   <div class="input-field col s12">
-                 <input type="text" class="datepicker">
-            <label>Fecha</label>
+                 <div class="input-field col s12">
+                <select>
+                <option value="" disabled selected>Elija Sesión</option>
+                <%
+                    List<Proyeccion> proyecciones= (List<Proyeccion>) session.getAttribute("proyecciones");
+                        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+                        for(int i=0;i<proyecciones.size();i++){
+                           
+                    %>
+                    <option value="<%=i%>"><%=format.format(proyecciones.get(i).getProyeccionPK().getFecha())  %></option>
+            <%}%>
+            </select>
+    <label>Sesion</label>
   </div>
                   
               </div>
