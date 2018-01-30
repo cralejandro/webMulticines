@@ -32,7 +32,7 @@ EntityManager em=null;
                query= em.createQuery("select t from Tarifa t");
                List<Tarifa> tarifas= query.getResultList();
                session.setAttribute("tarifas", tarifas);
-               gghjg
+               
                 %>
                  <jsp:forward page="mainview.jsp"/>
                  <%  }
