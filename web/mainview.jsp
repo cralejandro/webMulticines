@@ -4,6 +4,9 @@
     Author     : Alejandro
 --%>
 
+<%@page import="entities.Tarifa"%>
+<%@page import="entities.Sesion"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -46,10 +49,15 @@
               <div class="col s4">
                    <div class="input-field col s12">
                 <select>
-                <option value="" disabled selected>Choose your option</option>
-            <option value="1">Option 1</option>
-             <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
+                <option value="" disabled selected>Elija Sesión</option>
+                <%
+                    List<Sesion> sesiones= (List<Sesion>) session.getAttribute("sesiones");
+                    
+                        for(int i=0;i<sesiones.size();i++){
+                           
+                    %>
+                    <option value="<%=i%>"><%=sesiones.get(i).getHora()%></option>
+            <%}%>
             </select>
     <label>Sesion</label>
   </div>
@@ -58,10 +66,16 @@
               <div class="col s4">
                    <div class="input-field col s12">
                 <select>
-                <option value="" disabled selected>Choose your option</option>
-            <option value="1">Option 1</option>
-             <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
+                <option value="" disabled selected>Elija Tarifa</option>
+            <%
+                    List<Tarifa> tarifas= (List<Tarifa>) session.getAttribute("tarifas");
+                    
+                        for(int i=0;i<tarifas.size();i++){
+                           
+                    %>
+                    <option value="<%=i%>"><%=tarifas.get(i).getDescripcion()%></option>
+            <%}%>
+             
             </select>
     <label>Tarifa</label>
   </div>
@@ -164,6 +178,30 @@
           
           
       </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <!--Imports js!-->
       
       <script type="text/javascript">
           $(document).ready(function(){
@@ -171,13 +209,29 @@
              $(".button-collapse").sideNav();  
               $('select').material_select();
               
-               $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-         selectYears: 15, // Creates a dropdown of 15 years to control year,
-         today: 'Today',
-    clear: 'Clear',
-    close: 'Ok',
-    closeOnSelect: false // Close upon selecting a date,
+              $('.datepicker').pickadate({
+        selectMonths: true,//Creates a dropdown to control month
+        selectYears: 15,//Creates a dropdown of 15 years to control year
+        //The title label to use for the month nav buttons
+        labelMonthNext: 'Mes Siguiente',
+        labelMonthPrev: 'Mes Anterior',
+        //The title label to use for the dropdown selectors
+        labelMonthSelect: 'Select Mes',
+        labelYearSelect: 'Select Año',
+        //Months and weekdays
+        monthsFull: [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' ],
+        monthsShort: [ 'Ene', 'Feb', 'Mar', 'Abr', 'Mar', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ],
+        weekdaysFull: [ 'Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado' ],
+        weekdaysShort: [ 'Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab' ],
+        //Materialize modified
+        weekdaysLetter: [ 'D', 'L', 'M', 'X', 'J', 'V', 'S' ],
+        //Today and clear
+        today: 'Hoy',
+        clear: 'Clear',
+        close: 'Ok',
+        closeOnSelect: false, // Close upon selecting a date,
+        //The format to show on the `input` element
+        firstDay: 1 
         });
               
               
