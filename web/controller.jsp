@@ -3,6 +3,7 @@
     Created on : 30-ene-2018, 8:46:33
     Author     : Alejandro
 --%>
+<%@page import="entities.Pelicula"%>
 <%@page import="entities.Proyeccion"%>
 <%@page import="entities.Tarifa"%>
 <%@page import="entities.Sesion"%>
@@ -38,7 +39,14 @@ EntityManager em=null;
                   session.setAttribute("proyecciones", proyecciones);
                 %>
                  <jsp:forward page="mainview.jsp"/>
-                 <%  }
+                 <%  }else if(op.equals("reserva")){
+
+                 Short idPeli = Short.valueOf(request.getParameter("peli"));
+                  Pelicula peli =  em.find(Pelicula.class,idPeli);
+                  request.setAttribute("pelicula", peli);%>
+                  
+                  <jsp:forward page="reservarview.jsp"/>
+<%}
              
             %>    
 

@@ -28,7 +28,7 @@
     "<h2 class=\"header\">"+peli.getTitulo()+"</h2>"+
     "<div class=\"card horizontal\"> "+
       "<div class=\"card-image\">"+
-       " <img src=\""+  peli.getPoster()  +"\">"+
+       " <a href=\"controller.jsp?op=reserva&peli="+peli.getIdpelicula()+"\">  <img src=\""+  peli.getPoster()  +"\"/> </a>"+
       "</div>"+
      " <div class=\"card-stacked\">"+
       "  <div class=\"card-content\">"+

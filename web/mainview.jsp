@@ -55,7 +55,7 @@
                     <option value="<%=format.format(proyecciones.get(i).getProyeccionPK().getFecha())%>"><%=format.format(proyecciones.get(i).getProyeccionPK().getFecha())  %></option>
             <%}%>
             </select>
-    <label>Sesion</label>
+    <label>Fecha</label>
   </div>
                   
               </div>
